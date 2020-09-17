@@ -11,6 +11,8 @@ services:
     tty: true
     volumes:
       - .:/go/src/app
+    env_file:
+      - .env
     depends_on:
       - mysql
   mysql:
@@ -19,7 +21,7 @@ services:
     ports:
       - 4306:3306
     environment:
-      MYSQL_DATABASE: example_db
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
