@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    container_name: go_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    tty: true
+    volumes:
+      - .:/go/src/app
+    depends_on:
+      - mysql
+  mysql:
+    container_name: mysql
+    image: mysql:8
+    ports:
+      - 4306:3306
+    environment:
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
