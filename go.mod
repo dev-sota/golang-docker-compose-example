@@ -1,4 +1,4 @@
-module github.com/dev-sota/golang-docker-compose-example
+module github.com/dev-sota/golang-docker-compose-template
 
 go 1.15
 
